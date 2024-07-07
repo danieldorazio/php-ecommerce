@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.css">
+    <link rel="stylesheet" href="<?php echo ROOT_UTL; ?>/assets/css/style.css">
     <title>PHP E-commerce</title>
 </head>
 
@@ -12,7 +13,7 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
-            <a class="navbar-brand" href="http://localhost/progetti/php-ecommerce/?page=homepage.php">PHP E-commerce</a>
+            <a class="navbar-brand" href="<?php echo ROOT_UTL; ?>public?page=homepage">PHP E-commerce</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -20,16 +21,16 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/progetti/php-ecommerce/?page=about.php">Chi Siamo</a>
+                        <a class="nav-link" href="<?php echo ROOT_UTL; ?>public?page=about">Chi Siamo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/progetti/php-ecommerce/?page=services.php">Servizi</a>
+                        <a class="nav-link" href="<?php echo ROOT_UTL; ?>public?page=services">Servizi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Prodotti</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/progetti/php-ecommerce/?page=contacts.php">Contatti</a>
+                        <a class="nav-link" href="<?php echo ROOT_UTL; ?>public?page=contacts">Contatti</a>
                     </li>
                 </ul>
 
