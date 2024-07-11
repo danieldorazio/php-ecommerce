@@ -1,5 +1,12 @@
 <?php
-echo 'hello from "' . basename(__FILE__) . '"';
+
+//CONTROLLI 
+//controllo che si faccia l'accesso a questo file passando da index.php e no direttamente dall'url quindi che si sia creata la costante ROOT_URL poichè nel file index viene incluso il file init
+if (!defined('ROOT_URL')) {
+    die;
+}
+
+//controlli
 
 $productMgr = new ProductManager();
 $products = $productMgr->getAll();
@@ -19,5 +26,7 @@ $products = $productMgr->getAll();
                 </div>
             </div>
         <?php endforeach; ?>
+        <?php else :?>
+            <p>Nessum Prodotto disponibile...</p>
     <?php endif; ?>
 </div>
