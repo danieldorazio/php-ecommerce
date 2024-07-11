@@ -1,4 +1,6 @@
 <?php 
 
-define('ROOT_UTL', 'http://localhost/progetti/php-ecommerce/');
-define('ROOT_PATH', "C:\\MAMP\\htdocs\\progetti\\php-ecommerce\\" );
+require_once('../inc/config.php');
+require_once ROOT_PATH . 'inc/globals.php';
+require_once ROOT_PATH . 'classes/DB.php';
+require_once ROOT_PATH . 'classes/Product.php';
