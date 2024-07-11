@@ -17,11 +17,12 @@ try {
     // Recuperare i risultati
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Visualizzare i risultati
-    foreach ($results as $row) {
-        var_dump($row);
-        echo "ID: " . $row['id'] . " - Name: " . $row['name'] . " - Description: " . $row['description'] . " - Price: " . $row['price'] . " - Category_id: " . $row['category_id'] . "<br>";
-    }
+    var_dump($results);
+    //Visualizzare i risultati
+    // foreach ($results as $row) {
+        
+    //     echo "ID: " . $row['id'] . " - Name: " . $row['name'] . " - Description: " . $row['description'] . " - Price: " . $row['price'] . " - Category_id: " . $row['category_id'] . "<br>";
+    // }
 
 
 }
