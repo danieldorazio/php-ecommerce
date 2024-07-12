@@ -24,10 +24,14 @@ $products = $productMgr->getAll();
                     <h6 class="card-subtitle mb-2 text-muted"><?php echo $product->price ?></h6>
                     <p class="card-text"><?php echo $product->description ?></p>
                     <a href="<?php echo ROOT_URL . 'shop?page=view-product&id=' . $product->id ?>" class="card-link">Vedi &raquo;</a>
+                    <form>
+                        <input name="id" type="hidden" value="<?php echo $product->id ?>">
+                        <input name="add_to_cart" type="submit" class="btn btn-primary right" value="Aggiungi al carello">
+                    </form>
                 </div>
             </div>
         <?php endforeach; ?>
-        <?php else :?>
-            <p>Nessum Prodotto disponibile...</p>
+    <?php else : ?>
+        <p>Nessum Prodotto disponibile...</p>
     <?php endif; ?>
 </div>
