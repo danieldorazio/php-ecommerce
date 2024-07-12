@@ -1,6 +1,6 @@
 <?php 
 
-define('ROOT_UTL', 'http://localhost/progetti/php-ecommerce/');
+define('ROOT_URL', "http://" . $_SERVER['HTTP_HOST'] . "/progetti/php-ecommerce/");
 define('ROOT_PATH', "C:\\MAMP\\htdocs\\progetti\\php-ecommerce\\" );
 
 define('DB_HOST', 'localhost');

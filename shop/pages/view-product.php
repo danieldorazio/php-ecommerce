@@ -7,7 +7,7 @@ if (!defined('ROOT_URL')) {
 
 //controllo della esistenza del valore id
 if (!isset($_GET['id'])) {
-    echo "<script>location.href='".ROOT_UTL."';</script>";
+    echo "<script>location.href='".ROOT_URL."';</script>";
     exit;
 }
 
@@ -20,7 +20,7 @@ $product = $pm->get($id);
 
 //controllo l'esistenza del prodotto con id passato
 if(!(property_exists($product, 'id'))) {
-    echo "<script>location.href='".ROOT_UTL."';</script>";
+    echo "<script>location.href='".ROOT_URL."';</script>";
     exit;
 }
 
