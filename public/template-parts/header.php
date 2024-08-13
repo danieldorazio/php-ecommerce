@@ -37,9 +37,9 @@
 
                 <ul  class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="<?php echo ROOT_URL;?>shop/?page=cart">
-                            <i class="fas fa-shopping-cart nav-link"></i>
-                            <span class="badge rounded-pill bg-success">1</span>
+                        <a class="nav-link" href="<?php echo ROOT_URL;?>shop/?page=cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge bedge-success rounded-pill bg-success">1</span>
 
                         </a>
                     </li>

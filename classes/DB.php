@@ -24,7 +24,7 @@ class DB
         try {
             $q = $this->pdo->query($sql);
             if (!$q) {
-                // se la query è ha essore quindi è falsa mi crea una eccezione 
+                // se la query è ha essore quindi è falsa mi crea una eccezione
                 throw new Exception("Error executing query...");
                 return;
             }
@@ -43,13 +43,12 @@ class DB
         $stmt->execute();
     }
 
-    // metodo select_all dove passo un nome della tabella e un array di colonne 
+    // metodo select_all dove passo un nome della tabella e un array di colonne
     public function select_all(string $tableName, $columns = array())
     {
 
         $query = 'SELECT ';
 
-        //var_dump($columns); die;
         $strCol = implode(', ', $columns);
 
         $query .= $strCol . ' FROM ' . $tableName;
@@ -88,7 +87,7 @@ class DB
         }
     }
 
-    public function update_one(string $tableName,array $columns, int $id)
+    public function update_one(string $tableName, array $columns, int $id)
     {
 
         $strCol = '';
@@ -96,6 +95,8 @@ class DB
             $strCol .= " " . $colName . " = '$colValue' , ";
         }
         $strCol = substr($strCol, 0, -1);
+
+
 
         $query = "UPDATE $tableName SET $strCol WHERE id = $id";
         $query = str_replace("'NULL'", "NULL", $query);
@@ -112,17 +113,21 @@ class DB
     public function insert_one($tableName, $columns = array())
     {
 
-        $strCol = implode(", ", $columns);
-
         $strColValue = '';
+        $colNames = '';
         foreach ($columns as $colName => $colValue) {
             $strColValue .= " '" . $colValue . "' ,";
+            $colNames .= " `" . $colName . "` ,";
         }
         $strColValue = substr($strColValue, 0, -1);
+        $colNames = substr($colNames, 0, -1);
 
-        $query = "INSERT INTO $tableName ($strCol) VALUES ($strColValue)";
-        var_dump($query);
-        die;
+        // $colNames = implode(',', array_keys($columns));
+        // $strColValue = implode(',' . array_fill(0, count($columns), '?'));
+
+        $query = "INSERT INTO $tableName ($colNames) VALUES ($strColValue)";
+
+
         if (mysqli_query($this->conn, $query)) {
             $lastId = mysqli_insert_id($this->conn);
 
@@ -131,21 +136,25 @@ class DB
     }
 }
 
-class DBManager {
+class DBManager
+{
     protected $db;
     protected $columns;
     protected $tableName;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = new DB();
     }
-    
-    public function get($id) {
+
+    public function get($id)
+    {
         $resultArr = $this->db->select_one($this->tableName, $this->columns, (int)$id);
         return (object) $resultArr;
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         $results = $this->db->select_all($this->tableName, $this->columns);
         $objects = array();
         foreach ($results as $result) {
@@ -154,17 +163,20 @@ class DBManager {
         return $objects;
     }
 
-    public function create($obj) {
+    public function create($obj)
+    {
         $newId = $this->db->insert_one($this->tableName, (array) $obj);
         return $newId;
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $rowsDeleted = $this->db->delete_one($this->tableName, (int)$id);
         return (int) $rowsDeleted;
     }
 
-    public function update($obj, $id) {
+    public function update($obj, $id)
+    {
         $rowsUpdated = $this->db->update_one($this->tableName, (array) $obj, (int) $id);
         return (int) $rowsUpdated;
     }

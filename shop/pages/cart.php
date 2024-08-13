@@ -6,7 +6,7 @@
 
     <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-primary">Carrello</span>
-        <span class="badge bg-primary rounded-pill">3 elementi nel carrello</span>
+        <span class="badge bg-primary rounded-pill text-white">3 elementi nel carrello</span>
     </h4>
 
     <ul class="list-group mb-3">
@@ -92,7 +92,7 @@
             </div>
         </li>
 
-        <li class=" cart-total list-group-item d-flex justify-content-between p-4">
+        <li class="cart-total list-group-item d-flex justify-content-between p-4">
             <div class="row w-100">
                 <div class="col-lg-4 col-6">
                     <span class="">Totale</span>
