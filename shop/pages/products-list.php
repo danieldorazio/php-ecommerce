@@ -8,6 +8,16 @@ if (!defined('ROOT_URL')) {
 }
 
 //controlli
+if(isset($_POST['add_to_cart'])) {
+    // AGGIUNGI AL CARELLO
+    $productId = htmlspecialchars(trim($_POST['id']));
+    // addToCart Logic
+    $cm = new CartManager();
+    $cartId = $cm->getCurrentCartId();
+
+    //aggiungi al carrello "cartId" il prodotto "productId"
+    $cm->addTocart($productId, $cartId);
+}
 
 $productMgr = new ProductManager();
 $products = $productMgr->getAll();
@@ -24,7 +34,7 @@ $products = $productMgr->getAll();
                     <h6 class="card-subtitle mb-2 text-muted"><?php echo $product->price ?></h6>
                     <p class="card-text"><?php echo $product->description ?></p>
                     <a href="<?php echo ROOT_URL . 'shop?page=view-product&id=' . $product->id ?>" class="card-link">Vedi &raquo;</a>
-                    <form>
+                    <form method="post">
                         <input name="id" type="hidden" value="<?php echo $product->id ?>">
                         <input name="add_to_cart" type="submit" class="btn btn-primary right" value="Aggiungi al carello">
                     </form>

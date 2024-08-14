@@ -16,27 +16,29 @@ class DB
             die;
         }
         $this->pdo = new PDO('mysql:dbname=' . DB_NAME . ';host=' . DB_HOST, DB_USER, DB_PASS);
+    // per stampare le eccezioni quando si utilizza l'oggetto PDO
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     // metodo di query GET generale che restituisce un array di risultati
     public function query($sql)
     {
-        try {
+        // try {
             $q = $this->pdo->query($sql);
             if (!$q) {
                 // se la query è ha essore quindi è falsa mi crea una eccezione
-                throw new Exception("Error executing query...");
+                // throw new Exception("Error executing query...");
                 return;
             }
             // se la query è andata a buon fine mi preleva i dati e li inserisce nell'oggetto $data
             $data = $q->fetchAll();
             return $data;
-        } catch (Exception $e) {
-            throw $e;
-        }
+        // } catch (Exception $e) {
+        //     throw $e;
+        // }
     }
 
-    // metodo di chiamata PUT generale che esegue l'inserimento dei dati nel DB
+    // metodo di chiamata PUT generale che esegue l'inserimento dei dati nel DB quando non voglio ricevere nulla di riscontro, per esempio una query di update 
     public function execute($sql)
     {
         $stmt = $this->pdo->prepare($sql);
