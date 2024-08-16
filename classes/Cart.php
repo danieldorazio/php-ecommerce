@@ -33,7 +33,6 @@ class CartManager extends DBManager
     // preleva il numero di oggetti che compone il carrello dell'utente id e il totale del prezzo
     public function getCartTotal($cartId)
     {
-
         $result = $this->db->query("
         SELECT SUM(quantity) AS num_products, SUM(quantity* price) AS total
         FROM cart_item 

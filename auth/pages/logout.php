@@ -1,1 +1,7 @@
-hello from logout.php
+<?php 
+
+// togliere la variabile di sessione e fa un redirect alla pagina di login 
+unset($_SESSION['user']);
+echo '<script>location.href="'.ROOT_URL.'auth?page=login"</script>';
+exit;
+?>

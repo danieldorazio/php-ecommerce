@@ -35,31 +35,55 @@
                     </li>
                 </ul>
 
-                <ul  class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo ROOT_URL;?>shop/?page=cart">
+                        <a class="nav-link" href="<?php echo ROOT_URL; ?>shop/?page=cart">
                             <i class="fas fa-shopping-cart"></i>
                             <span class="badge bedge-success rounded-pill bg-success js-totCartItems"></span>
-
                         </a>
                     </li>
                 </ul>
+                <!-- se l'utente non è loggato mostrami il pannello per loggare  -->
+                <?php if (!$loggedInUser) : ?>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Area Riservata
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?php echo ROOT_URL; ?>auth?page=login">Login</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                <?php endif; ?>
 
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Area Riservata
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <!-- se l'utente è loggato mostrami il pannello per sloggare  -->
+                <?php if ($loggedInUser) : ?>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php echo $loggedInUser->email ?>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?php echo ROOT_URL; ?>auth?page=logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                <?php endif; ?>
+
+                <!-- se l'utente è loggato ed è admin mostrami il pannello per accedere alla Dashboard  -->
+                <?php if ($loggedInUser && $loggedInUser->is_admin) : ?>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Amministrazione
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?php echo ROOT_URL; ?>admin">Dashboard</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                <?php endif; ?>
 
             </div>
         </div>
