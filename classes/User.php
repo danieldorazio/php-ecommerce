@@ -30,6 +30,29 @@ class UserManager extends DBManager
         return false;
     }
 
+    // metodo confronto password, ritorna true se sono uguali altrimenti false
+    public function passwordsMatch($password, $confirm_password)
+    {
+        return $password == $confirm_password;
+    }
+
+    // methodo per la registrazione, verifica se l'email è gia presente nel db e se non è presente ne crea una 
+    public function register($email, $password)
+    {
+        $result = $this->db->query("SELECT * FROM user WHERE email = '$email' ");
+
+        if (count($result) > 0) {
+            return false;
+        }
+
+        $userId = $this->create([
+            'email' => $email,
+            'password' => MD5($password),
+            'user_type_id' => 2
+        ]);
+        return $userId;
+    }
+
     // Private Methods
     // funzione che setta i valori prelevati e condivide nella sessione 
     private function _setUser($user)

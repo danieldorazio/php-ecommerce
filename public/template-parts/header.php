@@ -51,7 +51,7 @@
                                 Area Riservata
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?php echo ROOT_URL; ?>auth?page=login">Login</a></li>
+                                <li><a class="dropdown-item" href="<?php echo ROOT_URL; ?>auth?page=login">Login / Registrazione</a></li>
                             </ul>
                         </li>
                     </ul>

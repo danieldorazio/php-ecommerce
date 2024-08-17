@@ -2,7 +2,6 @@
 $cm = new CartManager();
 $cartId = $cm->getCurrentCartId();
 $cart_total = $cm->getCartTotal($cartId);
-var_dump($cart_total['num_products']);
 
 ?>
 
